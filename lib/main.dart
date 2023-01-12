@@ -41,7 +41,9 @@ class _MyAppState extends State<MyApp> {
                     Column(
                       children: [
                         ElevatedButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            context.read<CounterBloc>().add(IncrementCounterEvent());
+                          },
                           child: const Text(
                             'Increment',
                             style: TextStyle(
@@ -53,7 +55,9 @@ class _MyAppState extends State<MyApp> {
                           width: 15.0,
                         ),
                         ElevatedButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            context.read<CounterBloc>().add(DecrementCounterEvent());
+                          },
                           child: const Text(
                             'Decrement',
                             style: TextStyle(
