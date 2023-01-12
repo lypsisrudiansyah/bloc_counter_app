@@ -1,4 +1,5 @@
 import 'package:bloc_counter_app/counter_bloc.dart';
+import 'package:bloc_counter_app/counter_withenumclass_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -23,8 +24,8 @@ class _MyAppState extends State<MyApp> {
         ),
         body: Center(
           child: BlocProvider(
-            create: (context) => CounterBloc(),
-            child: BlocBuilder<CounterBloc, int>(
+            create: (context) => CounterBloc2(),
+            child: BlocBuilder<CounterBloc2, int>(
               builder: (context, state) {
                 return Column(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -42,7 +43,7 @@ class _MyAppState extends State<MyApp> {
                       children: [
                         ElevatedButton(
                           onPressed: () {
-                            context.read<CounterBloc>().add(IncrementCounterEvent());
+                            context.read<CounterBloc2>().add(CounterEvent2.increment);
                           },
                           child: const Text(
                             'Increment',
@@ -56,7 +57,7 @@ class _MyAppState extends State<MyApp> {
                         ),
                         ElevatedButton(
                           onPressed: () {
-                            context.read<CounterBloc>().add(DecrementCounterEvent());
+                            context.read<CounterBloc2>().add(CounterEvent2.decrement);
                           },
                           child: const Text(
                             'Decrement',
