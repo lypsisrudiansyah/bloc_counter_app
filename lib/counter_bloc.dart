@@ -6,13 +6,20 @@ class DecrementCounterEvent extends CounterEvent {}
 
 class IncrementCounterEvent extends CounterEvent {}
 
-class CounterBloc extends Bloc<CounterEvent, int> {
-  CounterBloc() : super(0) {
+class CounterState {
+  int numberValue;
+
+  CounterState(this.numberValue);
+}
+
+class CounterBloc extends Bloc<CounterEvent, CounterState> {
+  CounterBloc() : super(CounterState(0)) {
+
     on<CounterEvent>((event, emit) {
       if (event is DecrementCounterEvent) {
-        emit(state - 1);
+        emit(CounterState(state.numberValue--));
       } else {
-        emit(state + 1);
+        emit(CounterState(state.numberValue++));
       }
     });
   }
