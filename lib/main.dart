@@ -24,14 +24,14 @@ class _MyAppState extends State<MyApp> {
         ),
         body: Center(
           child: BlocProvider(
-            create: (context) => CounterBloc2(),
-            child: BlocBuilder<CounterBloc2, int>(
+            create: (context) => CounterBloc(),
+            child: BlocBuilder<CounterBloc, String>(
               builder: (context, state) {
                 return Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      "$state",
+                      state,
                       style: const TextStyle(
                         fontSize: 30.0,
                       ),
@@ -43,7 +43,10 @@ class _MyAppState extends State<MyApp> {
                       children: [
                         ElevatedButton(
                           onPressed: () {
-                            context.read<CounterBloc2>().add(CounterEvent2.increment);
+                            // * Event Using Enum 
+                            // context.read<CounterBloc>().add(CounterEvent2.increment);
+                            // * Event Using Class 
+                            context.read<CounterBloc>().add(IncrementCounterEvent());
                           },
                           child: const Text(
                             'Increment',
@@ -57,7 +60,10 @@ class _MyAppState extends State<MyApp> {
                         ),
                         ElevatedButton(
                           onPressed: () {
-                            context.read<CounterBloc2>().add(CounterEvent2.decrement);
+                            // * Event Using Enum 
+                            // context.read<CounterBloc2>().add(CounterEvent2.decrement);
+                            // * Event Using Class 
+                            context.read<CounterBloc>().add(DecrementCounterEvent());
                           },
                           child: const Text(
                             'Decrement',

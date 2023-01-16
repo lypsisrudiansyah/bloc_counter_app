@@ -1,11 +1,11 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 
+// * Make Event using enum
 enum CounterEvent2 {
   increment,
   decrement
 }
-
 
 class CounterBloc2 extends Bloc<CounterEvent2, int> {
   CounterBloc2() : super(0) {
