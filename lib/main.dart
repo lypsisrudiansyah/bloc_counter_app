@@ -1,9 +1,21 @@
 import 'package:bloc_counter_app/counter_bloc.dart';
 import 'package:bloc_counter_app/counter_withenumclass_bloc.dart';
+import 'package:bloc_counter_app/screen/counter_bloc_class_screen.dart';
+import 'package:bloc_counter_app/screen/counter_bloc_enum_screen.dart';
+import 'package:bloc_counter_app/screen/counter_cubit_screen.dart';
+import 'package:bloc_counter_app/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-void main() => runApp(const MyApp());
+void main() => runApp(
+      MaterialApp(
+          home: const MyApp(),
+          theme: ThemeData(
+            primaryColor: primaryColorCustom,
+            colorScheme: ColorScheme.fromSwatch().copyWith(primary: primaryColorCustom),
+          ),
+          title: 'Flutter Bloc Learning'),
+    );
 
 class MyApp extends StatefulWidget {
   const MyApp({super.key});
@@ -15,70 +27,51 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: ThemeData(primarySwatch: Colors.orange),
-      title: 'Flutter Bloc Learning',
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Flutter Bloc Learning'),
-        ),
-        body: Center(
-          child: BlocProvider(
-            create: (context) => CounterBloc(),
-            child: BlocBuilder<CounterBloc, String>(
-              builder: (context, state) {
-                return Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      state,
-                      style: const TextStyle(
-                        fontSize: 30.0,
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 15.0,
-                    ),
-                    Column(
-                      children: [
-                        ElevatedButton(
-                          onPressed: () {
-                            // * Event Using Enum 
-                            // context.read<CounterBloc>().add(CounterEvent2.increment);
-                            // * Event Using Class 
-                            context.read<CounterBloc>().add(IncrementCounterEvent());
-                          },
-                          child: const Text(
-                            'Increment',
-                            style: TextStyle(
-                              fontSize: 18.0,
-                            ),
-                          ),
-                        ),
-                        const SizedBox(
-                          width: 15.0,
-                        ),
-                        ElevatedButton(
-                          onPressed: () {
-                            // * Event Using Enum 
-                            // context.read<CounterBloc2>().add(CounterEvent2.decrement);
-                            // * Event Using Class 
-                            context.read<CounterBloc>().add(DecrementCounterEvent());
-                          },
-                          child: const Text(
-                            'Decrement',
-                            style: TextStyle(
-                              fontSize: 18.0,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Flutter Bloc - Counter App'),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                backgroundColor: primaryColorCustom,
+              ),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const CounterBlocClassScreen()),
                 );
               },
+              child: const Text("Bloc Event using ClassEvent"),
             ),
-          ),
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                backgroundColor: primaryColorCustom,
+              ),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const CounterBlocEnumScreen()),
+                );
+              },
+              child: const Text("Bloc Event using EnumEvent"),
+            ),
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                backgroundColor: primaryColorCustom,
+              ),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const CounterCubitScreen()),
+                );
+              },
+              child: const Text("Implement With Cubit"),
+            ),
+          ],
         ),
       ),
     );

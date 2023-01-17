@@ -32,7 +32,7 @@ class CounterBloc extends Bloc<CounterEvent, CounterState> {
 
     on<CounterEvent>((event, emit) {
       if (event is DecrementCounterEvent) {
-        emit(CounterState(state.numberValue+1));
+        emit(CounterState(state.numberValue-1));
       } else {
         emit(CounterState(state.numberValue+1));
       }
