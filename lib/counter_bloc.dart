@@ -13,8 +13,8 @@ class CounterState {
   CounterState(this.numberValue);
 }
 
-// * Use String as state
-class CounterBloc extends Bloc<CounterEvent, String> {
+// * Implement bloc with String State 
+/* class CounterBloc extends Bloc<CounterEvent, String> {
   CounterBloc() : super("7") {
     on<CounterEvent>((event, emit) {
       if (event is DecrementCounterEvent) {
@@ -24,10 +24,10 @@ class CounterBloc extends Bloc<CounterEvent, String> {
       }
     });
   }
-}
+} */
 
-//* Use Class as state
-/* class CounterBloc extends Bloc<CounterEvent, CounterState> {
+//* Implement bloc with Class/Object State
+class CounterBloc extends Bloc<CounterEvent, CounterState> {
   CounterBloc() : super(CounterState(0)) {
 
     on<CounterEvent>((event, emit) {
@@ -38,6 +38,6 @@ class CounterBloc extends Bloc<CounterEvent, String> {
       }
     });
   }
-} */
+}
 
 
