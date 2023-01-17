@@ -31,10 +31,10 @@ class CounterCubit extends Cubit<CounterState2> {
   CounterCubit() : super(CounterState2(0));
 
   void increment() {
-    emit(CounterState2(state.numberValue++));
+    emit(CounterState2(state.numberValue+1));
   }
 
   void decrement() {
-    emit(CounterState2(state.numberValue--));
+    emit(CounterState2(state.numberValue-1));
   }
 }
