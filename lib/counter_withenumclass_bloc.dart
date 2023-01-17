@@ -25,3 +25,16 @@ class CounterBloc2 extends Bloc<CounterEvent2, CounterState2> {
     });
   }
 }
+
+// * Using cubit
+class CounterCubit extends Cubit<CounterState2> {
+  CounterCubit() : super(CounterState2(0));
+
+  void increment() {
+    emit(CounterState2(state.numberValue++));
+  }
+
+  void decrement() {
+    emit(CounterState2(state.numberValue--));
+  }
+}
