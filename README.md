@@ -1,6 +1,10 @@
 # bloc_counter_app
 
-A new Flutter project.
+## Preview Images
+![counterApp](https://github.com/lypsisrudiansyah/bloc_counter_app/assets/52348378/7f293b95-c953-4db4-bbb7-7bcd98f31f99)
+
+## Preview Video
+
 
 ## Getting Started
 
