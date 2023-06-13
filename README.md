@@ -5,6 +5,9 @@
 
 ## Preview Video
 
+https://github.com/lypsisrudiansyah/bloc_counter_app/assets/52348378/e14cf3a6-3619-4f88-9b8d-5ff0b8e4852f
+
+
 
 ## Getting Started
 
