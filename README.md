@@ -7,11 +7,7 @@
 
 https://github.com/lypsisrudiansyah/bloc_counter_app/assets/52348378/e14cf3a6-3619-4f88-9b8d-5ff0b8e4852f
 
-
-
-## Getting Started
-
-This project is a starting point for a Flutter application.
+## Getting Started for Flutter
 
 A few resources to get you started if this is your first Flutter project:
 
